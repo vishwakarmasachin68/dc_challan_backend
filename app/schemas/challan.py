@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import date, datetime
 from typing import Optional, List
+from .challan_item import ChallanItem
 
 class ChallanBase(BaseModel):
     dc_number: str
@@ -24,7 +25,8 @@ class Challan(ChallanBase):
         from_attributes = True
 
 class ChallanWithItems(Challan):
-    items: List['ChallanItem']
+    items: List[ChallanItem]
 
-class ChallanList(BaseModel):
-    challans: List[Challan]
+# Add this at the bottom
+from .challan_item import ChallanItemCreate
+ChallanCreate.update_forward_refs()

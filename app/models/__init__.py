@@ -1,3 +1,4 @@
+# This file should be empty or only contain imports without Base
 from .client import Client
 from .location import Location
 from .project import Project
